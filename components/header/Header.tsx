@@ -6,24 +6,21 @@ type headerProp = {
   animatedValue: any;
 };
 
-// const range = [-1, 0, 2, 0];
+const HEADER_EXPANDED_HEIGHT = 100;
+const HEADER_COLLAPSED_HEIGHT = 60;
+
 const Header = ({ showHeaderText, animatedValue }: headerProp) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current;
   const hey = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 900],
+    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
   });
-  console.log({ hey }, "NATE GROWING");
   return (
     <View style={styles.view}>
       <Text style={styles.headText}>Add your info</Text>
       <Animated.View
         style={{
           ...styles.textCon,
-          opacity: animatedValue.interpolate({
-            inputRange: [0, 900],
-            outputRange: [0, 1],
-          }),
+          opacity: hey,
         }}
       >
         <Text style={styles.text}>
@@ -38,12 +35,11 @@ export default Header;
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   headText: {
-    color: "#fff",
+    color: "white",
     fontSize: 30,
   },
   textCon: {
@@ -54,6 +50,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 5,
     width: "100%",
+    height: 100,
   },
   text: {
     color: "grey",

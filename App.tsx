@@ -66,14 +66,8 @@ export default function App() {
   };
 
   return (
-    <Animated.ScrollView
-      style={styles.container}
-      scrollEventThrottle={16}
-      onScroll={Animated.event(
-        [{ nativeEvent: { contentOffset: { y: offset } } }],
-        { useNativeDriver: true }
-      )}
-    >
+    <View style={styles.container}>
+      <Header showHeaderText={showHeaderText} animatedValue={offset} />
       {showScreen === "failure" ? (
         <Failure
           clearProfileSubmit={clearProfileSubmit}
@@ -85,18 +79,25 @@ export default function App() {
           showScreen={showScreen}
         />
       ) : (
-        <KeyboardAvoidingView>
-          <Header showHeaderText={showHeaderText} animatedValue={offset} />
-          <Form
-            handleProfileSubmit={handleProfileSubmit}
-            fields={fields}
-            updateFields={updateFields}
-            showScreen={showScreen}
-          />
-          <StatusBar style="auto" />
-        </KeyboardAvoidingView>
+        <Animated.ScrollView
+          style={styles.scrollView}
+          scrollEventThrottle={16}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: offset } } }],
+            { useNativeDriver: true }
+          )}
+        >
+          <KeyboardAvoidingView>
+            <Form
+              handleProfileSubmit={handleProfileSubmit}
+              fields={fields}
+              updateFields={updateFields}
+              showScreen={showScreen}
+            />
+          </KeyboardAvoidingView>
+        </Animated.ScrollView>
       )}
-    </Animated.ScrollView>
+    </View>
   );
 }
 
@@ -107,7 +108,15 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingTop: 130,
   },
-
+  scrollView: {
+    // marginTop: 20,
+    flex: 1,
+    paddingVertical: 30,
+    height: 800,
+    // borderColor: "red",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+  },
   view: {
     flex: 1,
     paddingTop: 20,

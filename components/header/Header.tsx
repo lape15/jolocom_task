@@ -6,28 +6,49 @@ type headerProp = {
   animatedValue: any;
 };
 
-const HEADER_EXPANDED_HEIGHT = 100;
-const HEADER_COLLAPSED_HEIGHT = 60;
+const HEADER_EXPANDED_HEIGHT = 1;
+const HEADER_COLLAPSED_HEIGHT = 0;
 
 const Header = ({ showHeaderText, animatedValue }: headerProp) => {
-  const hey = animatedValue.interpolate({
-    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
-    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+  let AnimatedHeaderValue = new Animated.Value(0);
+  const opacityVal = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+    extrapolate: "clamp",
+  });
+  const translateVal = animatedValue.interpolate({
+    inputRange: [0, 70],
+    outputRange: [70, 0],
+    extrapolate: "clamp",
+  });
+  const heightVal = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0.9],
+    extrapolate: "clamp",
   });
   return (
-    <View style={styles.view}>
+    <Animated.View
+      style={[
+        styles.view,
+        {
+          transform: [
+            {
+              translateY: translateVal,
+            },
+            {
+              scale: heightVal,
+            },
+          ],
+        },
+      ]}
+    >
       <Text style={styles.headText}>Add your info</Text>
-      <Animated.View
-        style={{
-          ...styles.textCon,
-          opacity: hey,
-        }}
-      >
+      <Animated.View style={{ ...styles.textCon, opacity: opacityVal }}>
         <Text style={styles.text}>
           To complete your profile please fill in all neccessary information
         </Text>
       </Animated.View>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -37,6 +58,8 @@ const styles = StyleSheet.create({
   view: {
     alignItems: "center",
     justifyContent: "center",
+    paddingVertical: 4,
+    width: "100%",
   },
   headText: {
     color: "white",
@@ -47,17 +70,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    padding: 10,
+    paddingVertical: 12,
     marginVertical: 5,
     width: "100%",
-    height: 100,
   },
   text: {
     color: "grey",
     textAlign: "center",
     width: "100%",
-    paddingVertical: 20,
-    // backgroundColor: "yellow",
+    paddingVertical: 30,
     overflow: "scroll",
   },
 });

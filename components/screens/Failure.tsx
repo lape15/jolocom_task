@@ -21,7 +21,7 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 80000,
+      duration: 500000,
       useNativeDriver: true,
       delay: 1000,
     }).start();
@@ -31,7 +31,7 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: 800000,
+      duration: 5000,
       useNativeDriver: true,
       delay: 1000,
     }).start();
@@ -40,14 +40,16 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
   useEffect(() => {
     if (showScreen === "failure") {
       fadeIn();
-      console.log("I AM HERE");
     }
     return () => {
       fadeOut();
     };
   }, []);
   return (
-    <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
+    <Animated.View
+      style={{ ...styles.container, opacity: fadeAnim }}
+      testID="failure"
+    >
       <View>
         <View>
           <Text style={{ ...styles.text, fontSize: 25 }}>Oooopsy</Text>

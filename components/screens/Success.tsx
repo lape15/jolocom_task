@@ -4,10 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  Button,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   TouchableOpacity,
   Animated,
 } from "react-native";
@@ -49,7 +45,10 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
   }, [showScreen]);
 
   return (
-    <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
+    <Animated.View
+      style={{ ...styles.container, opacity: fadeAnim }}
+      testID="sucess"
+    >
       <View>
         <View>
           <Text style={{ ...styles.text, fontSize: 25 }}>Sucess</Text>

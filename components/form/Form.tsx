@@ -34,9 +34,9 @@ const Form = (props: FormProps) => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: 800000,
+      duration: 5000,
       useNativeDriver: true,
-      delay: 1000,
+      // delay: 1500,
     }).start();
   };
 
@@ -44,9 +44,9 @@ const Form = (props: FormProps) => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 80000,
+      duration: 5000,
       useNativeDriver: true,
-      delay: 1000,
+      // delay: 15000,
     }).start();
   };
   useEffect(() => {
@@ -59,11 +59,14 @@ const Form = (props: FormProps) => {
   }, [showScreen]);
 
   const moveToNextField = (name: string) => {
-    if (name === "lasttName") return lastName.current?.focus();
-    if (name === "phoneNumber") return phoneNumber.current?.focus();
-    if (name === "email") return email.current?.focus();
+    console.log({ name });
+
+    if (name === "firstName") return lastName.current?.focus();
+    if (name === "lastName") return phoneNumber.current?.focus();
+    if (name === "phoneNumber") return email.current?.focus();
+    if (name === "email") return age.current?.focus();
     if (name === "age") return age.current?.focus();
-    if (name === "age") return firstName.current?.focus();
+    // if (name === "age") return firstName.current?.focus();
   };
 
   return (
@@ -71,12 +74,10 @@ const Form = (props: FormProps) => {
       style={[
         styles.view,
         {
-          transform: [
-            { translateY: fadeAnim },
-            // { scale: fadeAnim }
-          ],
+          transform: [{ translateY: fadeAnim }],
         },
       ]}
+      testID="form"
     >
       <InputBox
         value={fields.firstName}
@@ -84,7 +85,7 @@ const Form = (props: FormProps) => {
         name="firstName"
         placeholder="First name"
         keyboardType="default"
-        refName="lastName"
+        refName="firstName"
         ref={firstName}
         moveToNextField={moveToNextField}
       />
@@ -96,7 +97,7 @@ const Form = (props: FormProps) => {
         placeholder="Last name"
         keyboardType="default"
         ref={lastName}
-        refName="phoneNumber"
+        refName="lastName"
         moveToNextField={moveToNextField}
       />
       <InputBox
@@ -106,7 +107,7 @@ const Form = (props: FormProps) => {
         keyboardType="numeric"
         placeholder="Phone number"
         ref={phoneNumber}
-        refName="email"
+        refName="phoneNumber"
         moveToNextField={moveToNextField}
       />
       <InputBox
@@ -116,7 +117,7 @@ const Form = (props: FormProps) => {
         keyboardType="email-address"
         placeholder="Email"
         ref={email}
-        refName="age"
+        refName="email"
         moveToNextField={moveToNextField}
       />
       <InputBox
@@ -126,7 +127,7 @@ const Form = (props: FormProps) => {
         keyboardType="number-pad"
         placeholder="Age"
         ref={age}
-        refName="firtName"
+        refName="fage"
         moveToNextField={moveToNextField}
       />
       <View style={styles.btnView}>
@@ -135,6 +136,7 @@ const Form = (props: FormProps) => {
           style={{ ...styles.btn, ...(fields.isValid && { opacity: 1 }) }}
           activeOpacity={1}
           disabled={!fields.isValid}
+          testID="submitInfo"
         >
           <Text style={styles.btnText}>Submit</Text>
         </TouchableOpacity>
@@ -146,9 +148,9 @@ const Form = (props: FormProps) => {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 30,
     marginHorizontal: 4,
-    marginTop: 10,
+    marginTop: 25,
     height: 750,
   },
   btnView: {

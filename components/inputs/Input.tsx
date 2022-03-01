@@ -7,7 +7,7 @@ type inputProp = {
   keyboardType: any;
   name: string;
   placeholder: string;
-  refName: any;
+  refName: string;
   moveToNextField: Function;
 };
 const InputBox = forwardRef((props: inputProp, ref: any) => {
@@ -29,6 +29,8 @@ const InputBox = forwardRef((props: inputProp, ref: any) => {
         ref={ref}
         style={{ ...styles.input, ...(isFocused && { borderColor: "blue" }) }}
         placeholder={placeholder}
+        accessibilityLabel="answer input"
+        accessibilityHint="input"
         value={String(value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

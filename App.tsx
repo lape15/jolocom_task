@@ -67,7 +67,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header showHeaderText={showHeaderText} animatedValue={offset} />
       {showScreen === "failure" ? (
         <Failure
           clearProfileSubmit={clearProfileSubmit}
@@ -79,23 +78,26 @@ export default function App() {
           showScreen={showScreen}
         />
       ) : (
-        <Animated.ScrollView
-          style={styles.scrollView}
-          scrollEventThrottle={16}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: offset } } }],
-            { useNativeDriver: true }
-          )}
-        >
-          <KeyboardAvoidingView>
-            <Form
-              handleProfileSubmit={handleProfileSubmit}
-              fields={fields}
-              updateFields={updateFields}
-              showScreen={showScreen}
-            />
-          </KeyboardAvoidingView>
-        </Animated.ScrollView>
+        <>
+          <Header showHeaderText={showHeaderText} animatedValue={offset} />
+          <Animated.ScrollView
+            style={styles.scrollView}
+            scrollEventThrottle={16}
+            onScroll={Animated.event(
+              [{ nativeEvent: { contentOffset: { y: offset } } }],
+              { useNativeDriver: true }
+            )}
+          >
+            <KeyboardAvoidingView>
+              <Form
+                handleProfileSubmit={handleProfileSubmit}
+                fields={fields}
+                updateFields={updateFields}
+                showScreen={showScreen}
+              />
+            </KeyboardAvoidingView>
+          </Animated.ScrollView>
+        </>
       )}
     </View>
   );
@@ -106,38 +108,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingTop: 130,
+    paddingTop: 30,
   },
   scrollView: {
     // marginTop: 20,
     flex: 1,
     paddingVertical: 30,
     height: 800,
-    // borderColor: "red",
-    // borderWidth: 1,
-    // borderStyle: "solid",
-  },
-  view: {
-    flex: 1,
-    paddingTop: 20,
-    marginHorizontal: 4,
-    marginTop: 10,
-    height: 750,
-  },
-  btnView: {
-    flex: 1,
-    marginTop: 20,
-  },
-  btn: {
-    width: "100%",
-    textAlign: "center",
-    padding: 20,
-    backgroundColor: "#E75480",
-    color: "white",
-    opacity: 0.3,
-  },
-  btnText: {
-    textAlign: "center",
-    color: "white",
   },
 });

@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form submits two answers matches snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "height": 750,
+      "marginHorizontal": 4,
+      "marginTop": 25,
+      "paddingTop": 30,
+      "transform": Array [
+        Object {
+          "translateY": 0,
+        },
+      ],
+    }
+  }
+  testID="form"
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "margin": 10,
+        "marginTop": 5,
+        "padding": 10,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <TextInput
+      accessibilityHint="input"
+      accessibilityLabel="answer input"
+      allowFontScaling={true}
+      keyboardType="default"
+      moveToNextField={[Function]}
+      name="firstName"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="First name"
+      placeholderTextColor="grey"
+      refName="lastName"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      setValue={[MockFunction]}
+      style={
+        Object {
+          "backgroundColor": "rgba(126,94,129,0.25)",
+          "borderColor": "rgba(126,94,129,0.1)",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "color": "white",
+          "padding": 18,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </RCTSafeAreaView>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "margin": 10,
+        "marginTop": 5,
+        "padding": 10,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <TextInput
+      accessibilityHint="input"
+      accessibilityLabel="answer input"
+      allowFontScaling={true}
+      keyboardType="default"
+      moveToNextField={[Function]}
+      name="lastName"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Last name"
+      placeholderTextColor="grey"
+      refName="phoneNumber"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      setValue={[MockFunction]}
+      style={
+        Object {
+          "backgroundColor": "rgba(126,94,129,0.25)",
+          "borderColor": "rgba(126,94,129,0.1)",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "color": "white",
+          "padding": 18,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </RCTSafeAreaView>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "margin": 10,
+        "marginTop": 5,
+        "padding": 10,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <TextInput
+      accessibilityHint="input"
+      accessibilityLabel="answer input"
+      allowFontScaling={true}
+      keyboardType="numeric"
+      moveToNextField={[Function]}
+      name="phoneNumber"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Phone number"
+      placeholderTextColor="grey"
+      refName="email"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      setValue={[MockFunction]}
+      style={
+        Object {
+          "backgroundColor": "rgba(126,94,129,0.25)",
+          "borderColor": "rgba(126,94,129,0.1)",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "color": "white",
+          "padding": 18,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </RCTSafeAreaView>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "margin": 10,
+        "marginTop": 5,
+        "padding": 10,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <TextInput
+      accessibilityHint="input"
+      accessibilityLabel="answer input"
+      allowFontScaling={true}
+      keyboardType="email-address"
+      moveToNextField={[Function]}
+      name="email"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Email"
+      placeholderTextColor="grey"
+      refName="age"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      setValue={[MockFunction]}
+      style={
+        Object {
+          "backgroundColor": "rgba(126,94,129,0.25)",
+          "borderColor": "rgba(126,94,129,0.1)",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "color": "white",
+          "padding": 18,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </RCTSafeAreaView>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "margin": 10,
+        "marginTop": 5,
+        "padding": 10,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <TextInput
+      accessibilityHint="input"
+      accessibilityLabel="answer input"
+      allowFontScaling={true}
+      keyboardType="number-pad"
+      moveToNextField={[Function]}
+      name="age"
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Age"
+      placeholderTextColor="grey"
+      refName="firtName"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      setValue={[MockFunction]}
+      style={
+        Object {
+          "backgroundColor": "rgba(126,94,129,0.25)",
+          "borderColor": "rgba(126,94,129,0.1)",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "color": "white",
+          "padding": 18,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </RCTSafeAreaView>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginTop": 20,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#E75480",
+          "color": "white",
+          "opacity": 0.3,
+          "padding": 20,
+          "textAlign": "center",
+          "width": "100%",
+        }
+      }
+      testID="submitInfo"
+    >
+      <Text
+        style={
+          Object {
+            "color": "white",
+            "textAlign": "center",
+          }
+        }
+      >
+        Submit
+      </Text>
+    </View>
+  </View>
+</View>
+`;

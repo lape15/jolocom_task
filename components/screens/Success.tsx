@@ -14,10 +14,10 @@ type Props = {
 };
 
 const Success = ({ clearProfileSubmit, showScreen }: Props) => {
-  const fadeAnim = useRef(new Animated.Value(800)).current;
+  const fadeAnim = useRef(new Animated.Value(900)).current;
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
-      toValue: 120,
+      toValue: 150,
       duration: 1500,
       useNativeDriver: true,
     }).start();
@@ -25,7 +25,7 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
 
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
-      toValue: 800,
+      toValue: 900,
       duration: 1500,
       useNativeDriver: true,
     }).start();
@@ -83,18 +83,23 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     color: "white",
+    padding: 15,
+    lineHeight: 25,
   },
 
   btn: {
     width: "100%",
     textAlign: "center",
-    padding: 20,
-    backgroundColor: "#E75480",
+    padding: 15,
+    backgroundColor: "rgba(128,128,123,0.6)",
     color: "white",
-    opacity: 0.3,
+    marginVertical: 20,
+    marginHorizontal: 20,
   },
   btnText: {
     textAlign: "center",
     color: "white",
+    fontSize: 18,
+    fontWeight: "700",
   },
 });

@@ -53,7 +53,7 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
       testID="failure"
     >
       <View>
-        <View>
+        <View style={{ width: "100%" }}>
           <Text style={{ ...styles.text, fontSize: 25 }}>Oooopsy</Text>
           <Text
             style={{

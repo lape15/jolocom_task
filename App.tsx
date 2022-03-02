@@ -84,6 +84,10 @@ export default function App() {
     setRandomNum(Math.floor(Math.random() * 9));
   };
 
+  useEffect(() => {
+    if (fields.isValid) handleProfileSubmit();
+  }, [fields.isValid]);
+
   return (
     <View style={styles.container}>
       <Header

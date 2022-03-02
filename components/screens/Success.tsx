@@ -17,8 +17,8 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
   const fadeAnim = useRef(new Animated.Value(800)).current;
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
-      toValue: 150,
-      duration: 2000,
+      toValue: 120,
+      duration: 1500,
       useNativeDriver: true,
     }).start();
   };
@@ -26,7 +26,7 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 800,
-      duration: 2000,
+      duration: 1500,
       useNativeDriver: true,
     }).start();
   };
@@ -74,10 +74,11 @@ export default Success;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingTop: 150,
+    paddingTop: 30,
+    position: "absolute",
+    width: "100%",
   },
   text: {
     textAlign: "center",

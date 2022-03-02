@@ -19,8 +19,8 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
   const fadeAnim = useRef(new Animated.Value(800)).current;
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
-      toValue: 150,
-      duration: 2000,
+      toValue: 120,
+      duration: 1500,
       useNativeDriver: true,
     }).start();
   };
@@ -28,7 +28,7 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 800,
-      duration: 2000,
+      duration: 1500,
       useNativeDriver: true,
     }).start();
   };

@@ -36,7 +36,7 @@ export default function App() {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
       toValue: -700,
-      duration: 2000,
+      duration: 1500,
       useNativeDriver: true,
       delay: 1000,
     }).start();
@@ -46,7 +46,7 @@ export default function App() {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
       toValue: 110,
-      duration: 2000,
+      duration: 1500,
       useNativeDriver: true,
       delay: 1000,
     }).start();

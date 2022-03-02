@@ -65,9 +65,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     width: "100%",
     backgroundColor: "black",
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2,
+    marginTop: 5,
   },
   headText: {
     color: "white",

@@ -23,7 +23,7 @@ const Header = ({ showHeaderText, animatedValue }: headerProp) => {
   });
   const heightVal = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [1, 0.9],
+    outputRange: [1, 0.8],
     extrapolate: "clamp",
   });
   return (
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 4,
     width: "100%",
+    // borderStyle: "solid",
+    // borderWidth: 1,
+    // borderColor: "green",
   },
   headText: {
     color: "white",

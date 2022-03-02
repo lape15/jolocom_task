@@ -27,7 +27,6 @@ const initialState = {
 };
 
 export default function App() {
-  const [title, setTitle] = useState("");
   const [showHeaderText, setShowHeaderText] = useState(0);
   const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 9));
   const offset = useRef(new Animated.Value(1)).current;
@@ -43,6 +42,35 @@ export default function App() {
       isValid: checkValidity(),
     });
   };
+
+  const fadeAnim = useRef(new Animated.Value(-500)).current;
+  const fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(fadeAnim, {
+      toValue: -500,
+      duration: 2000,
+      useNativeDriver: true,
+      delay: 1000,
+    }).start();
+  };
+
+  const fadeOut = () => {
+    // Will change fadeAnim value to 0 in 3 seconds
+    Animated.timing(fadeAnim, {
+      toValue: 20,
+      duration: 2000,
+      useNativeDriver: true,
+      delay: 1000,
+    }).start();
+  };
+  useEffect(() => {
+    if (showScreen === "") {
+      fadeOut();
+    } else fadeIn();
+    // return () => {
+    //   fadeIn();
+    // };
+  }, [showScreen]);
 
   const checkValidity = () => {
     let valid = true;
@@ -81,7 +109,13 @@ export default function App() {
         <>
           <Header showHeaderText={showHeaderText} animatedValue={offset} />
           <Animated.ScrollView
-            style={styles.scrollView}
+            // style={styles.scrollView}
+            style={[
+              styles.scrollView,
+              {
+                transform: [{ translateY: fadeAnim }],
+              },
+            ]}
             scrollEventThrottle={16}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { y: offset } } }],
@@ -108,12 +142,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingTop: 30,
+    paddingTop: 20,
   },
   scrollView: {
     // marginTop: 20,
     flex: 1,
-    paddingVertical: 30,
+    paddingVertical: 10,
     height: 800,
   },
 });

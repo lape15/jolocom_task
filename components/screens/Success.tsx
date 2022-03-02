@@ -14,12 +14,12 @@ type Props = {
 };
 
 const Success = ({ clearProfileSubmit, showScreen }: Props) => {
-  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const fadeAnim = useRef(new Animated.Value(600)).current;
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 800000,
+      toValue: 100,
+      duration: 2000,
       useNativeDriver: true,
       delay: 1000,
     }).start();
@@ -28,8 +28,8 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 800000,
+      toValue: 600,
+      duration: 2000,
       useNativeDriver: true,
       delay: 1000,
     }).start();
@@ -38,15 +38,21 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
   useEffect(() => {
     if (showScreen === "success") {
       fadeIn();
-    }
-    return () => {
-      fadeOut();
-    };
+    } else fadeOut();
   }, [showScreen]);
 
   return (
     <Animated.View
-      style={{ ...styles.container, opacity: fadeAnim }}
+      style={[
+        styles.container,
+        {
+          transform: [
+            {
+              translateY: fadeAnim,
+            },
+          ],
+        },
+      ]}
       testID="sucess"
     >
       <View>
@@ -75,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingTop: 130,
+    paddingTop: 150,
   },
   text: {
     textAlign: "center",

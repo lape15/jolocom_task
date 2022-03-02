@@ -16,38 +16,44 @@ type Props = {
   showScreen: string;
 };
 const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
-  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const fadeAnim = useRef(new Animated.Value(700)).current;
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 500000,
+      toValue: 100,
+      duration: 2000,
       useNativeDriver: true,
-      delay: 1000,
+      delay: 500,
     }).start();
   };
 
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
+      toValue: 700,
+      duration: 4000,
       useNativeDriver: true,
-      delay: 1000,
+      delay: 500,
     }).start();
   };
 
   useEffect(() => {
     if (showScreen === "failure") {
       fadeIn();
-    }
-    return () => {
-      fadeOut();
-    };
+    } else fadeOut();
   }, []);
   return (
     <Animated.View
-      style={{ ...styles.container, opacity: fadeAnim }}
+      style={[
+        styles.container,
+        {
+          transform: [
+            {
+              translateY: fadeAnim,
+            },
+          ],
+        },
+      ]}
       testID="failure"
     >
       <View>

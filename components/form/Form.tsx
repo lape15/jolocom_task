@@ -28,57 +28,18 @@ const Form = (props: FormProps) => {
   const phoneNumber = useRef<null | { focus: Function }>(null);
   const email = useRef<null | { focus: Function }>(null);
   const age = useRef<null | { focus: Function }>(null);
-
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
-      useNativeDriver: true,
-      // delay: 1500,
-    }).start();
-  };
-
-  const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 5000,
-      useNativeDriver: true,
-      // delay: 15000,
-    }).start();
-  };
-  useEffect(() => {
-    if (showScreen === " ") {
-      fadeIn();
-    }
-    return () => {
-      fadeOut();
-    };
-  }, [showScreen]);
+  const btnRef = useRef<null | { focus: Function }>(null);
 
   const moveToNextField = (name: string) => {
-    console.log({ name });
-
     if (name === "firstName") return lastName.current?.focus();
     if (name === "lastName") return phoneNumber.current?.focus();
     if (name === "phoneNumber") return email.current?.focus();
     if (name === "email") return age.current?.focus();
-    if (name === "age") return age.current?.focus();
-    // if (name === "age") return firstName.current?.focus();
+    if (name === "age") return btnRef.current?.focus();
   };
 
   return (
-    <Animated.View
-      style={[
-        styles.view,
-        {
-          transform: [{ translateY: fadeAnim }],
-        },
-      ]}
-      testID="form"
-    >
+    <Animated.View style={[styles.view]} testID="form">
       <InputBox
         value={fields.firstName}
         setValue={updateFields}

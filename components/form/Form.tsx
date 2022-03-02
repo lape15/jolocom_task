@@ -20,9 +20,16 @@ type FormProps = {
   updateFields: Function;
   handleProfileSubmit: Function;
   showScreen: string;
+  showHeaderText: string;
 };
 const Form = (props: FormProps) => {
-  const { fields, updateFields, handleProfileSubmit, showScreen } = props;
+  const {
+    fields,
+    updateFields,
+    handleProfileSubmit,
+    showScreen,
+    showHeaderText,
+  } = props;
   const firstName = useRef<null | { focus: Function }>(null);
   const lastName = useRef<null | { focus: Function }>(null);
   const phoneNumber = useRef<null | { focus: Function }>(null);
@@ -39,70 +46,83 @@ const Form = (props: FormProps) => {
   };
 
   return (
-    <Animated.View style={[styles.view]} testID="form">
-      <InputBox
-        value={fields.firstName}
-        setValue={updateFields}
-        name="firstName"
-        placeholder="First name"
-        keyboardType="default"
-        refName="firstName"
-        ref={firstName}
-        moveToNextField={moveToNextField}
-      />
+    <>
+      {!showHeaderText && (
+        <View style={styles.formHead}>
+          <Text style={styles.headText}>Add your info</Text>
+          <Animated.View style={{ ...styles.textCon }}>
+            <Text style={styles.text}>
+              To complete your profile please fill in all neccessary information
+            </Text>
+          </Animated.View>
+        </View>
+      )}
 
-      <InputBox
-        value={fields.lastName}
-        setValue={updateFields}
-        name="lastName"
-        placeholder="Last name"
-        keyboardType="default"
-        ref={lastName}
-        refName="lastName"
-        moveToNextField={moveToNextField}
-      />
-      <InputBox
-        value={fields.phoneNumber}
-        setValue={updateFields}
-        name="phoneNumber"
-        keyboardType="numeric"
-        placeholder="Phone number"
-        ref={phoneNumber}
-        refName="phoneNumber"
-        moveToNextField={moveToNextField}
-      />
-      <InputBox
-        value={fields.email}
-        setValue={updateFields}
-        name="email"
-        keyboardType="email-address"
-        placeholder="Email"
-        ref={email}
-        refName="email"
-        moveToNextField={moveToNextField}
-      />
-      <InputBox
-        value={fields.age}
-        setValue={updateFields}
-        name="age"
-        keyboardType="number-pad"
-        placeholder="Age"
-        ref={age}
-        refName="fage"
-        moveToNextField={moveToNextField}
-      />
-      <View style={styles.btnView}>
-        <TouchableOpacity
-          onPress={() => handleProfileSubmit()}
-          style={{ ...styles.btn, ...(fields.isValid && { opacity: 1 }) }}
-          activeOpacity={1}
-          disabled={!fields.isValid}
-          testID="submitInfo"
-        >
-          <Text style={styles.btnText}>Submit</Text>
-        </TouchableOpacity>
+      <View style={[styles.view]} testID="form">
+        <InputBox
+          value={fields.firstName}
+          setValue={updateFields}
+          name="firstName"
+          placeholder="First name"
+          keyboardType="default"
+          refName="firstName"
+          ref={firstName}
+          moveToNextField={moveToNextField}
+        />
+
+        <InputBox
+          value={fields.lastName}
+          setValue={updateFields}
+          name="lastName"
+          placeholder="Last name"
+          keyboardType="default"
+          ref={lastName}
+          refName="lastName"
+          moveToNextField={moveToNextField}
+        />
+        <InputBox
+          value={fields.phoneNumber}
+          setValue={updateFields}
+          name="phoneNumber"
+          keyboardType="numeric"
+          placeholder="Phone number"
+          ref={phoneNumber}
+          refName="phoneNumber"
+          moveToNextField={moveToNextField}
+        />
+        <InputBox
+          value={fields.email}
+          setValue={updateFields}
+          name="email"
+          keyboardType="email-address"
+          placeholder="Email"
+          ref={email}
+          refName="email"
+          moveToNextField={moveToNextField}
+        />
+        <InputBox
+          value={fields.age}
+          setValue={updateFields}
+          name="age"
+          keyboardType="number-pad"
+          placeholder="Age"
+          ref={age}
+          refName="fage"
+          moveToNextField={moveToNextField}
+        />
+        <View style={styles.btnView}>
+          <TouchableOpacity
+            onPress={() => handleProfileSubmit()}
+            style={{ ...styles.btn, ...(fields.isValid && { opacity: 1 }) }}
+            activeOpacity={1}
+            disabled={!fields.isValid}
+            testID="submitInfo"
+          >
+            <Text style={styles.btnText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </Animated.View>
+    </>
   );
 };
 
@@ -111,8 +131,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
     marginHorizontal: 4,
-    marginTop: 25,
+    marginTop: 10,
     height: 750,
+  },
+  formHead: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 2,
+    width: "100%",
+    marginTop: 5,
+    // backgroundColor: "red",
   },
   btnView: {
     flex: 1,
@@ -131,6 +159,26 @@ const styles = StyleSheet.create({
   btnText: {
     textAlign: "center",
     color: "white",
+  },
+  headText: {
+    color: "white",
+    fontSize: 30,
+  },
+  textCon: {
+    height: 55,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    paddingVertical: 12,
+    marginVertical: 5,
+    width: "100%",
+  },
+  text: {
+    color: "grey",
+    textAlign: "center",
+    width: "100%",
+    paddingVertical: 30,
+    overflow: "scroll",
   },
 });
 

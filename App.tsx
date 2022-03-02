@@ -1,5 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { StyleSheet, View, KeyboardAvoidingView, Animated } from "react-native";
+import {
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Animated,
+  Platform,
+} from "react-native";
 import Header from "./components/header/Header";
 import Success from "./components/screens/Success";
 import Failure from "./components/screens/Failure";
@@ -15,7 +21,7 @@ const initialState = {
 };
 
 export default function App() {
-  const [showHeaderText, setShowHeaderText] = useState(0);
+  const [showHeaderText, setShowHeaderText] = useState("");
   const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 9));
   const offset = useRef(new Animated.Value(1)).current;
 
@@ -45,7 +51,7 @@ export default function App() {
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 110,
+      toValue: 80,
       duration: 1500,
       useNativeDriver: true,
       delay: 1000,
@@ -68,7 +74,6 @@ export default function App() {
   };
 
   const handleProfileSubmit = () => {
-    setRandomNum(Math.floor(Math.random() * 9));
     if (randomNum / 2 === 0) return setShowScreen("sucess");
     setShowScreen("failure");
   };
@@ -76,6 +81,7 @@ export default function App() {
   const clearProfileSubmit = () => {
     setShowScreen("");
     setFields(initialState);
+    setRandomNum(Math.floor(Math.random() * 9));
   };
 
   return (
@@ -89,14 +95,21 @@ export default function App() {
         style={[
           styles.scrollView,
           {
+            marginTop: showHeaderText ? 65 : 15,
             transform: [{ translateY: fadeAnim }],
           },
         ]}
         scrollEventThrottle={16}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: offset } } }],
-          { useNativeDriver: true }
-        )}
+        onScroll={(e) => {
+          Animated.event([{ nativeEvent: { contentOffset: { y: offset } } }], {
+            useNativeDriver: true,
+          });
+          if (e.nativeEvent.contentOffset.y <= 0) {
+            setShowHeaderText("");
+          } else {
+            setShowHeaderText("Add your info");
+          }
+        }}
       >
         <KeyboardAvoidingView>
           <Form
@@ -104,6 +117,7 @@ export default function App() {
             fields={fields}
             updateFields={updateFields}
             showScreen={showScreen}
+            showHeaderText={showHeaderText}
           />
         </KeyboardAvoidingView>
       </Animated.ScrollView>
@@ -127,7 +141,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   scrollView: {
-    marginTop: 30,
+    marginTop: 15,
     // flex: 1,
     paddingVertical: 10,
     height: 600,

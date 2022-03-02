@@ -19,12 +19,12 @@ const Header = ({ showScreen, animatedValue, showHeaderText }: headerProp) => {
   });
   const translateVal = animatedValue.interpolate({
     inputRange: [0, 70],
-    outputRange: [70, 0],
+    outputRange: [60, 0],
     extrapolate: "clamp",
   });
   const heightVal = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0.8, 1],
+    outputRange: [0.5, 1],
     extrapolate: "clamp",
   });
   if (showScreen !== "") {
@@ -47,7 +47,9 @@ const Header = ({ showScreen, animatedValue, showHeaderText }: headerProp) => {
         },
       ]}
     >
-      <Text style={styles.headText}>{showHeaderText}</Text>
+      <Text style={{ ...styles.headText, opacity: showHeaderText ? 1 : 0 }}>
+        {showHeaderText}
+      </Text>
     </Animated.View>
   );
 };

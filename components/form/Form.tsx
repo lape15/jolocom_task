@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
   btnView: {
     flex: 1,
     marginTop: 20,
+    marginHorizontal: 10,
   },
   btn: {
     width: "100%",
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E75480",
     color: "white",
     opacity: 0.3,
+    borderRadius: 2,
   },
   btnText: {
     textAlign: "center",

@@ -16,24 +16,20 @@ type Props = {
   showScreen: string;
 };
 const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
-  const fadeAnim = useRef(new Animated.Value(700)).current;
+  const fadeAnim = useRef(new Animated.Value(800)).current;
   const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
-      toValue: 100,
+      toValue: 150,
       duration: 2000,
       useNativeDriver: true,
-      delay: 500,
     }).start();
   };
 
   const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 700,
-      duration: 4000,
+      toValue: 800,
+      duration: 2000,
       useNativeDriver: true,
-      delay: 500,
     }).start();
   };
 
@@ -41,7 +37,7 @@ const Failure = ({ clearProfileSubmit, showScreen }: Props) => {
     if (showScreen === "failure") {
       fadeIn();
     } else fadeOut();
-  }, []);
+  }, [showScreen]);
   return (
     <Animated.View
       style={[
@@ -89,10 +85,12 @@ export default Failure;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#000",
     height: "100%",
     paddingTop: 30,
+    position: "absolute",
+    width: "100%",
   },
   text: {
     textAlign: "center",

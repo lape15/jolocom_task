@@ -1,18 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Button,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  Animated,
-} from "react-native";
+import { StyleSheet, View, KeyboardAvoidingView, Animated } from "react-native";
 import Header from "./components/header/Header";
-import InputBox from "./components/inputs/Input";
 import Success from "./components/screens/Success";
 import Failure from "./components/screens/Failure";
 import Form from "./components/form/Form";
@@ -47,7 +35,7 @@ export default function App() {
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
-      toValue: -500,
+      toValue: -700,
       duration: 2000,
       useNativeDriver: true,
       delay: 1000,
@@ -57,7 +45,7 @@ export default function App() {
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 20,
+      toValue: 110,
       duration: 2000,
       useNativeDriver: true,
       delay: 1000,
@@ -67,9 +55,6 @@ export default function App() {
     if (showScreen === "") {
       fadeOut();
     } else fadeIn();
-    // return () => {
-    //   fadeIn();
-    // };
   }, [showScreen]);
 
   const checkValidity = () => {
@@ -95,44 +80,41 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {showScreen === "failure" ? (
-        <Failure
-          clearProfileSubmit={clearProfileSubmit}
-          showScreen={showScreen}
-        />
-      ) : showScreen === "successs" ? (
-        <Success
-          clearProfileSubmit={clearProfileSubmit}
-          showScreen={showScreen}
-        />
-      ) : (
-        <>
-          <Header showHeaderText={showHeaderText} animatedValue={offset} />
-          <Animated.ScrollView
-            // style={styles.scrollView}
-            style={[
-              styles.scrollView,
-              {
-                transform: [{ translateY: fadeAnim }],
-              },
-            ]}
-            scrollEventThrottle={16}
-            onScroll={Animated.event(
-              [{ nativeEvent: { contentOffset: { y: offset } } }],
-              { useNativeDriver: true }
-            )}
-          >
-            <KeyboardAvoidingView>
-              <Form
-                handleProfileSubmit={handleProfileSubmit}
-                fields={fields}
-                updateFields={updateFields}
-                showScreen={showScreen}
-              />
-            </KeyboardAvoidingView>
-          </Animated.ScrollView>
-        </>
-      )}
+      <Header
+        showHeaderText={showHeaderText}
+        animatedValue={offset}
+        showScreen={showScreen}
+      />
+      <Animated.ScrollView
+        style={[
+          styles.scrollView,
+          {
+            transform: [{ translateY: fadeAnim }],
+          },
+        ]}
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: offset } } }],
+          { useNativeDriver: true }
+        )}
+      >
+        <KeyboardAvoidingView>
+          <Form
+            handleProfileSubmit={handleProfileSubmit}
+            fields={fields}
+            updateFields={updateFields}
+            showScreen={showScreen}
+          />
+        </KeyboardAvoidingView>
+      </Animated.ScrollView>
+      <Failure
+        clearProfileSubmit={clearProfileSubmit}
+        showScreen={showScreen}
+      />
+      <Success
+        clearProfileSubmit={clearProfileSubmit}
+        showScreen={showScreen}
+      />
     </View>
   );
 }
@@ -142,12 +124,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     height: "100%",
-    paddingTop: 20,
+    paddingTop: 10,
   },
   scrollView: {
-    // marginTop: 20,
-    flex: 1,
+    marginTop: 30,
+    // flex: 1,
     paddingVertical: 10,
-    height: 800,
+    height: 600,
+    position: "absolute",
+    width: "100%",
   },
 });

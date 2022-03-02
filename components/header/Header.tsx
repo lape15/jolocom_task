@@ -4,12 +4,13 @@ import { useRef } from "react";
 type headerProp = {
   showHeaderText: number;
   animatedValue: any;
+  showScreen: string;
 };
 
 const HEADER_EXPANDED_HEIGHT = 1;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
-const Header = ({ showHeaderText, animatedValue }: headerProp) => {
+const Header = ({ showScreen, animatedValue }: headerProp) => {
   let AnimatedHeaderValue = new Animated.Value(0);
   const opacityVal = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -26,6 +27,9 @@ const Header = ({ showHeaderText, animatedValue }: headerProp) => {
     outputRange: [1, 0.8],
     extrapolate: "clamp",
   });
+  if (showScreen !== "") {
+    return null;
+  }
   return (
     <Animated.View
       style={[
@@ -60,9 +64,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 4,
     width: "100%",
+    backgroundColor: "black",
+    // borderColor: "red",
     // borderStyle: "solid",
-    // borderWidth: 1,
-    // borderColor: "green",
+    // borderWidth: 2,
   },
   headText: {
     color: "white",

@@ -14,24 +14,20 @@ type Props = {
 };
 
 const Success = ({ clearProfileSubmit, showScreen }: Props) => {
-  const fadeAnim = useRef(new Animated.Value(600)).current;
+  const fadeAnim = useRef(new Animated.Value(800)).current;
   const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
-      toValue: 100,
+      toValue: 150,
       duration: 2000,
       useNativeDriver: true,
-      delay: 1000,
     }).start();
   };
 
   const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 600,
+      toValue: 800,
       duration: 2000,
       useNativeDriver: true,
-      delay: 1000,
     }).start();
   };
 

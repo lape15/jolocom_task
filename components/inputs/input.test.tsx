@@ -9,17 +9,6 @@ describe("form submits two answers", () => {
   const name = "firstName";
   const mockFn = jest.fn();
   const value = "firstName";
-  //   const setState = jest.fn();
-  //   const useStateSpy = jest.spyOn(React, "useState");
-  //   useStateSpy.mockImplementation((init: any) => [init, setState]);
-  //   const initialState = {
-  //     firstName: "",
-  //     lastName: "",
-  //     phoneNumber: "",
-  //     email: "",
-  //     age: "",
-  //     isValid: false,
-  //   };
 
   const { getAllByA11yLabel, getByText, queryAllByA11yLabel, toJSON } = render(
     <InputBox

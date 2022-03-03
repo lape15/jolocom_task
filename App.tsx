@@ -150,8 +150,5 @@ const styles = StyleSheet.create({
     height: Platform.OS === "android" ? 700 : 600,
     position: "absolute",
     width: "100%",
-    // borderColor: "red",
-    // borderWidth: 4,
-    // borderStyle: "solid",
   },
 });

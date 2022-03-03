@@ -130,9 +130,9 @@ const Form = (props: FormProps) => {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    paddingTop: 30,
+    paddingTop: Platform.OS === "android" ? 40 : 30,
     marginHorizontal: 4,
-    marginTop: 20,
+    marginTop: Platform.OS === "ios" ? 20 : 10,
     height: 750,
   },
   formHead: {
@@ -141,6 +141,9 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     width: "100%",
     marginTop: 5,
+    // borderColor: "red",
+    // borderWidth: 4,
+    // borderStyle: "solid",
   },
   btnView: {
     flex: 1,

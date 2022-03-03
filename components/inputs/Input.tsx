@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from "react";
-import { TextInput, StyleSheet, SafeAreaView, Keyboard } from "react-native";
+import { TextInput, StyleSheet, SafeAreaView, Platform } from "react-native";
 
 type inputProp = {
   value: string | number;
@@ -49,15 +49,15 @@ const styles = StyleSheet.create({
   inputBox: {
     padding: 10,
     margin: 10,
-    marginTop: 5,
-    paddingTop: 30,
+    marginTop: Platform.OS === "ios" ? 5 : 0,
+    paddingTop: Platform.OS === "ios" ? 30 : 20,
   },
 
   input: {
     backgroundColor: "rgba(126,94,129,0.25)",
     borderColor: "rgba(126,94,129,0.1)",
     borderWidth: 1,
-    padding: 15,
+    padding: Platform.OS === "ios" ? 18 : 15,
     borderStyle: "solid",
     borderRadius: 8,
     color: "white",

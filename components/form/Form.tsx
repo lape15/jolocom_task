@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   Animated,
+  Platform,
 } from "react-native";
 import InputBox from "../inputs/Input";
 
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
     marginHorizontal: 4,
-    marginTop: 10,
+    marginTop: 20,
     height: 750,
   },
   formHead: {
@@ -140,7 +141,6 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     width: "100%",
     marginTop: 5,
-    // backgroundColor: "red",
   },
   btnView: {
     flex: 1,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   textCon: {
-    height: 55,
+    height: Platform.OS === "android" ? 65 : 60,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
@@ -177,8 +177,7 @@ const styles = StyleSheet.create({
     color: "grey",
     textAlign: "center",
     width: "100%",
-    paddingVertical: 30,
-    overflow: "scroll",
+    paddingVertical: Platform.OS === "android" ? 0 : 30,
   },
 });
 

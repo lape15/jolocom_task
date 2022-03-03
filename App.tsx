@@ -51,7 +51,7 @@ export default function App() {
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
-      toValue: 80,
+      toValue: Platform.OS === "android" ? 30 : 50,
       duration: 1500,
       useNativeDriver: true,
       delay: 1000,
@@ -146,10 +146,12 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginTop: 15,
-    // flex: 1,
     paddingVertical: 10,
-    height: 600,
+    height: Platform.OS === "android" ? 700 : 600,
     position: "absolute",
     width: "100%",
+    // borderColor: "red",
+    // borderWidth: 4,
+    // borderStyle: "solid",
   },
 });

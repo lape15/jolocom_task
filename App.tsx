@@ -74,7 +74,7 @@ export default function App() {
   };
 
   const handleProfileSubmit = () => {
-    if (randomNum / 2 === 0) return setShowScreen("sucess");
+    if (randomNum / 2 === 0) return setShowScreen("success");
     setShowScreen("failure");
   };
 

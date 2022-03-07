@@ -141,9 +141,6 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     width: "100%",
     marginTop: 5,
-    // borderColor: "red",
-    // borderWidth: 4,
-    // borderStyle: "solid",
   },
   btnView: {
     flex: 1,

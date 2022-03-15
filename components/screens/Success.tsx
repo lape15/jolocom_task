@@ -49,7 +49,7 @@ const Success = ({ clearProfileSubmit, showScreen }: Props) => {
           ],
         },
       ]}
-      testID="sucess"
+      testID="success"
     >
       <View>
         <View>

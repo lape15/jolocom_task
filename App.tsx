@@ -11,7 +11,7 @@ import Success from "./components/screens/Success";
 import Failure from "./components/screens/Failure";
 import Form from "./components/form/Form";
 
-const initialState = {
+const initialState: Fields = {
   firstName: "",
   lastName: "",
   phoneNumber: "",
@@ -19,6 +19,15 @@ const initialState = {
   age: "",
   isValid: false,
 };
+
+interface Fields {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  age: string;
+  isValid: boolean;
+}
 
 export default function App() {
   const [showHeaderText, setShowHeaderText] = useState("");
@@ -63,13 +72,16 @@ export default function App() {
     } else fadeIn();
   }, [showScreen]);
 
+  function getFieldValue(key: keyof Fields) {
+    return fields[key];
+  }
+
   const checkValidity = () => {
     let valid = true;
-    valid = fields.firstName !== "" && valid;
-    valid = fields.lastName !== "" && valid;
-    valid = fields.phoneNumber !== "" && valid;
-    valid = fields.email !== "" && valid;
-    valid = fields.age !== "" && valid;
+    const objKeys = Object.keys(fields).slice(0, 5);
+    for (let i = 0; i < objKeys.length; i += 1) {
+      valid = getFieldValue(objKeys[i] as keyof Fields) !== "" && valid;
+    }
     return valid;
   };
 

@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Animated,
   Platform,
+  SafeAreaView
 } from "react-native";
 import Header from "./components/header/Header";
 import Success from "./components/screens/Success";
@@ -53,7 +54,6 @@ export default function App() {
       toValue: -700,
       duration: 1500,
       useNativeDriver: true,
-      delay: 1000,
     }).start();
   };
 
@@ -63,7 +63,6 @@ export default function App() {
       toValue: Platform.OS === "android" ? 30 : 50,
       duration: 1500,
       useNativeDriver: true,
-      delay: 1000,
     }).start();
   };
   useEffect(() => {
@@ -96,11 +95,12 @@ export default function App() {
     setRandomNum(Math.floor(Math.random() * 9));
   };
 
-  useEffect(() => {
-    if (fields.isValid) handleProfileSubmit();
-  }, [fields.isValid]);
+  // useEffect(() => {
+  //   if (fields.isValid) handleProfileSubmit();
+  // }, [fields.isValid]);
 
   return (
+    
     <View style={styles.container}>
       <Header
         showHeaderText={showHeaderText}
@@ -162,5 +162,6 @@ const styles = StyleSheet.create({
     height: Platform.OS === "android" ? 700 : 600,
     position: "absolute",
     width: "100%",
+    zIndex:5
   },
 });

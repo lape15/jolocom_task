@@ -37,6 +37,7 @@ const InputBox = forwardRef((props: inputProp, ref: any) => {
         onChangeText={(text) => setValue(name, text)}
         keyboardType={keyboardType}
         returnKeyType="done"
+        testID="input"
         placeholderTextColor={`${isFocused ? "white" : "grey"}`}
         onSubmitEditing={() => moveToNextField(refName)}
       />

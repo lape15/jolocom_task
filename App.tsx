@@ -5,7 +5,7 @@ import {
   KeyboardAvoidingView,
   Animated,
   Platform,
-  SafeAreaView
+  SafeAreaView,
 } from "react-native";
 import Header from "./components/header/Header";
 import Success from "./components/screens/Success";
@@ -100,7 +100,6 @@ export default function App() {
   // }, [fields.isValid]);
 
   return (
-    
     <View style={styles.container}>
       <Header
         showHeaderText={showHeaderText}
@@ -162,6 +161,6 @@ const styles = StyleSheet.create({
     height: Platform.OS === "android" ? 700 : 600,
     position: "absolute",
     width: "100%",
-    zIndex:5
+    zIndex: 5,
   },
 });
